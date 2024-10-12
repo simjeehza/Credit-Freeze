@@ -4,6 +4,13 @@
 
 The **Credit Freeze** project was created to assist individuals in protecting their personal information after discovering that their Social Security Number (SSN) was part of a data leak. This project aims to provide a user-friendly guide on how to initiate a credit freeze with major credit bureaus, helping users secure their credit reports and prevent identity theft.
 
+## Technologies Used
+
+- **React:** A JavaScript library for building user interfaces.
+- **TypeScript:** A superset of JavaScript that adds static types for better development experience.
+- **Material-UI:** A popular React UI framework that provides pre-built components for faster and easier UI development.
+- **HTML/CSS:** For structuring and styling the application.
+
 ## Features
 
 - **Informative Guide:** Step-by-step instructions on how to freeze your credit.
