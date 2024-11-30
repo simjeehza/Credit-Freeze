@@ -22,7 +22,7 @@ import transunionStep7Image from "./assets/transunion-step7.png";
 
 const experianSteps = [
   {
-    step: "Go to https://www.experian.com/",
+    step: "Go to Registration https://www.experian.com/",
     imageUrl: "",
     link: "https://www.experian.com/",
   },
@@ -39,7 +39,7 @@ const experianSteps = [
     imageUrl: "",
   },
   {
-    step: "Go to https://usa.experian.com/mfe/regulatory/security-freeze",
+    step: "Go to Freeze dashboard https://usa.experian.com/mfe/regulatory/security-freeze",
     imageUrl: "",
     link: "https://usa.experian.com/mfe/regulatory/security-freeze",
   },
@@ -241,6 +241,7 @@ const App: React.FC = () => {
                 <>
                   {steps[currentStep].step.split(steps[currentStep].link)[0]}{" "}
                   {/* Text before the link */}
+                  <br /> {/* Line break between the text and the link */}
                   <a
                     href={steps[currentStep].link}
                     target="_blank"
@@ -252,8 +253,6 @@ const App: React.FC = () => {
                   >
                     {steps[currentStep].link}
                   </a>
-                  {steps[currentStep].step.split(steps[currentStep].link)[1]}{" "}
-                  {/* Text after the link */}
                 </>
               ) : (
                 steps[currentStep].step // If no link, render the step normally
