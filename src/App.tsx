@@ -22,95 +22,95 @@ import transunionStep7Image from "./assets/transunion-step7.png";
 
 const experianSteps = [
   {
-    step: "1. Go to https://www.experian.com/",
+    step: "Go to https://www.experian.com/",
     imageUrl: "",
     link: "https://www.experian.com/",
   },
   {
-    step: '2. Click "Sign In" in the top right',
+    step: 'Click "Sign In" in the top right',
     imageUrl: step2Image,
   },
   {
-    step: '3. Click "Sign up for free"',
+    step: 'Click "Sign up for free"',
     imageUrl: step3Image,
   },
   {
-    step: "4. Go through all the steps to create your account",
+    step: "Go through all the steps to create your account",
     imageUrl: "",
   },
   {
-    step: "5. Go to https://usa.experian.com/mfe/regulatory/security-freeze",
+    step: "Go to https://usa.experian.com/mfe/regulatory/security-freeze",
     imageUrl: "",
     link: "https://usa.experian.com/mfe/regulatory/security-freeze",
   },
   {
-    step: '6. Under "Your file is unfrozen", click Frozen',
+    step: 'Under "Your file is unfrozen", click Frozen',
     imageUrl: step6Image,
   },
   {
-    step: "7. Done when the page looks like this",
+    step: "Done when the page looks like this",
     imageUrl: step7Image,
   },
 ];
 
 const equifaxSteps = [
   {
-    step: "1. Go to Registration",
+    step: "Go to Registration",
     imageUrl: "",
     link: "https://my.equifax.com/consumer-registration/UCSC/index.html",
   },
   {
-    step: "2. Go through all the steps to create your account",
+    step: "Go through all the steps to create your account",
     imageUrl: "",
   },
   {
-    step: "3. Go to Freeze dashboard",
+    step: "Go to Freeze dashboard",
     imageUrl: "",
     link: "https://my.equifax.com/membercenter/#/freeze",
   },
   {
-    step: '4. Click the "Place A Freeze" button',
+    step: 'Click the "Place A Freeze" button',
     imageUrl: equifaxStep4Image,
   },
   {
-    step: '5. Again, click the "Place A Freeze" button',
+    step: 'Again, click the "Place A Freeze" button',
     imageUrl: equifaxStep5Image,
   },
   {
-    step: "6. Done when the page looks like this",
-    images: [equifaxStep6Image1, equifaxStep6Image2], // Multiple images for this step
+    step: "Done when the page looks like this",
+    images: [equifaxStep6Image1, equifaxStep6Image2],
   },
 ];
 
 const transunionSteps = [
   {
-    step: "1. Go to Registration",
+    step: "Go to Registration",
     imageUrl: "",
     link: "https://service.transunion.com/dss/orderStep1_form.page",
   },
   {
-    step: "2. Go through all the steps to create your account",
+    step: "Go through all the steps to create your account",
     imageUrl: "",
   },
   {
-    step: "3. Go to Freeze dashboard",
+    step: "Go to Freeze dashboard",
     imageUrl: "",
     link: "https://service.transunion.com/dss/freezeStatus.page",
   },
   {
-    step: "4. Click the “Add Freeze” button",
+    step: "Click the “Add Freeze” button",
     imageUrl: transunionStep4Image,
   },
   {
-    step: "5. Click the “Continue” button",
+    step: "Click the “Continue” button",
     imageUrl: transunionStep5Image,
   },
   {
-    step: '6. Again, click the "Continue" button',
+    step: 'Again, click the "Continue" button',
     imageUrl: transunionStep6Image,
   },
   {
-    step: "7. Done when the page looks like this",
+    step: "Done when the page looks like this",
     imageUrl: transunionStep7Image,
   },
 ];
@@ -173,8 +173,8 @@ const App: React.FC = () => {
         onClick={() => handleOpen("Experian")}
         sx={{
           margin: "10px",
-          padding: { xs: "8px 16px", md: "16px 32px" }, // Increase padding for desktop
-          fontSize: { xs: "1rem", md: "1.5rem" }, // Larger font size for desktop
+          padding: { xs: "8px 16px", md: "16px 32px" },
+          fontSize: { xs: "1rem", md: "1.5rem" },
         }}
       >
         Experian
@@ -221,48 +221,44 @@ const App: React.FC = () => {
         >
           <Box
             sx={{
-              width: { xs: "90%", sm: "80%", md: "90%" }, // Responsive width
-              maxWidth: "900px", // Cap the max width
-              maxHeight: "90vh", // Ensure the modal doesn't exceed the viewport height
+              width: { xs: "90%", sm: "80%", md: "90%" },
+              maxWidth: "900px",
+              maxHeight: "90vh",
               bgcolor: "background.paper",
               boxShadow: 24,
-              p: 3, // Padding inside the modal
+              p: 3,
               borderRadius: 2,
-              overflowY: "auto", // Enable vertical scrolling
-              overflowX: "hidden", // Prevent horizontal scrolling
+              overflowY: "auto",
               textAlign: "center",
-              position: "relative", // Ensure proper positioning
+              position: "relative",
             }}
           >
             <Typography variant="h4" component="h2" gutterBottom>
               Step {currentStep + 1} of {steps.length}
             </Typography>
             <Typography variant="h6" paragraph>
-              {steps[currentStep].step}
+              {steps[currentStep].link ? (
+                <>
+                  {steps[currentStep].step.split(steps[currentStep].link)[0]}{" "}
+                  {/* Text before the link */}
+                  <a
+                    href={steps[currentStep].link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      color: "#1a0dab", // Link color
+                      textDecoration: "none", // Remove underline by default
+                    }}
+                  >
+                    {steps[currentStep].link}
+                  </a>
+                  {steps[currentStep].step.split(steps[currentStep].link)[1]}{" "}
+                  {/* Text after the link */}
+                </>
+              ) : (
+                steps[currentStep].step // If no link, render the step normally
+              )}
             </Typography>
-            {steps[currentStep].link && (
-              <Typography
-                component="p" // Replaces the deprecated paragraph prop
-                variant="body1"
-                sx={{
-                  wordWrap: "break-word", // Ensures long text wraps
-                  textAlign: "center", // Center-align text
-                  fontSize: { xs: "1rem", md: "1.5rem" }, // Responsive font size
-                }}
-              >
-                <a
-                  href={steps[currentStep].link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    color: "#1a0dab", // Typical link color
-                    textDecoration: "none", // Remove underline by default
-                  }}
-                >
-                  {steps[currentStep].link}
-                </a>
-              </Typography>
-            )}
 
             {steps[currentStep].imageUrl && (
               <img
@@ -280,7 +276,6 @@ const App: React.FC = () => {
                   style={{ maxWidth: "100%", marginBottom: "15px" }}
                 />
               ))}
-
             <Box display="flex" justifyContent="space-between" marginTop={2}>
               <Button
                 variant="contained"
@@ -307,7 +302,6 @@ const App: React.FC = () => {
                 Next
               </Button>
             </Box>
-
             <Button
               onClick={handleClose}
               variant="contained"
