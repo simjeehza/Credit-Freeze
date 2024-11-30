@@ -249,6 +249,10 @@ const App: React.FC = () => {
                     style={{
                       color: "#1a0dab", // Link color
                       textDecoration: "none", // Remove underline by default
+                      wordWrap: "break-word", // Ensure long URLs wrap
+                      wordBreak: "break-all", // Break long URLs at any point if necessary
+                      display: "inline-block", // Ensure the link behaves as an inline block element
+                      maxWidth: "100%", // Ensure the link does not overflow horizontally
                     }}
                   >
                     {steps[currentStep].link}
